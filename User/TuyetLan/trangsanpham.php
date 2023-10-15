@@ -128,14 +128,6 @@
                 <div class="col">
                     <!-- sanpham1 -->
 
-                    <div id ="cars">
-                        <select >
-                            <option value="selected" selected>Sắp xếp theo</option>
-                            <option value="saab">Giá tăng dần</option>
-                            <option value="vw">Giá giảm dần</option>
-                            <option value="audi">Tên sản phẩm A-Z</option>
-                          </select>
-                    </div>
 
 
                     <div class="row mt-4 d-flex">

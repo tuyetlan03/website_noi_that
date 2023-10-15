@@ -17,6 +17,8 @@ if(isset($_POST["ID"]) && isset($_POST["numbe"])){
     { // Sử dụng biến
         if($numbe > $row["so_luong"] ){
             $numbe = $row["so_luong"];
+        } else if($numbe < 0) {
+            $numbe = 1;
         }
             }
         } else {

@@ -64,10 +64,6 @@ include 'funtion.php';
                 }
             }
             $_SESSION['cart'] = $cart;
-            $numbecart = 0;
-            foreach ($cart as $key => $value) {
-                $numbecart++;
-            }
         }
     }
     // tải lại trang sau khi thêm sản phẩm.
