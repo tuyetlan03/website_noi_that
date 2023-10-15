@@ -70,38 +70,32 @@
     <!-- sanphamchitiettop -->
 
 
-    <!-- đổi lại action theo tên giỏ hàng  -->
-    <form action="cart.php "method="post"> 
+   
+    <form action="cart.php"method="post"> 
     <div class="d-flex">
         <!-- left -->
-        <?php 
-           
+        <?php
             $sql = "SELECT * FROM  san_pham WHERE id = ".$_GET["ID"];
-    
             $result = $conn->query($sql);// đây là phần thực hiện truy vấn
-            if ($result->num_rows > 0) { // nếu dữ liệu có thì ta sử dụng while để duyệt qua từng hàng (có thể sử dụng foreach)
+            if ($result->num_rows > 0) { // nếu dữ liệu có thì ta sử dụng while để duyệt qua từng cột (có thể sử dụng foreach)
                 while ($row = $result->fetch_assoc()) 
             { // Sử dụng biến $row 
         ?>
         <div>
-            <img style="height=500px; width: 600px"; src="<?=$row["anh_thumbnail"]?>" alt="anh <?=$row["ten_san_pham"]?>">
+            <img style="height=500px; width: 600px"; src="../../Admin/Quan_li_san_pham/<?=$row["anh_thumbnail"]?>" alt="anh <?=$row["ten_san_pham"]?>">
         </div>
         <!-- right -->
-       
         <div class="ml-4">
-            
             <p style="font-size: 25px;"> <b><?=$row["ten_san_pham"]?></b> </p>
-            <p style="font-size: 25px;"> <b><?=$row["gia_ban"]?></b> </p>
+            <p style="font-size: 25px;"> <b>Giá: <?=$row["gia_ban"]?> </span><sup>đ</sup></b> </p>
             <label>Số Lượng</label>
-            <input  name="soluong"  type="number" min="1" max="50" value="1">
+            <input  name="soluong"  type="number" min="1"  max="<?= $row["so_luong"]?>" value="1">
             <input style = "display: none;"  name="ID"  type="number" value="<?=$row["id"]?>">
-             
             <div class="ctsp">
-                <button onclick='adcart(<?php echo $row["id"] ?>)' class="muangay">MUA NGAY</button>
+                <button type="submit" class="muangay">MUA NGAY</button>
                 <button  type="submit"><i class='bx bx-cart-add'></i></button>
             </div>
             <?php
-            
         ?>
         </div>
     </div>
@@ -128,22 +122,7 @@
     <?php
     include_once 'footer.php';
     ?>
-   <script>
-        function adcart(ID) {
-            numbe = 1;
-            numbe = $('#numbe').val();
-            //alert(ID);
-            //alert(numbe);
-            $.post("addcart.php", {
-                "ID": ID,
-                "numbe": numbe
-            }, function(data) {
 
-                $("#numbercart").text(data);
-            });
-            alert("Bạn đã thêm 1 sản phẩm vào giỏ hàng");
-        }
-    </script>
 
 </body>
 </html>

@@ -41,9 +41,16 @@ include 'funtion.php';
             } else {
                 $cart = $_SESSION['cart'];
                 if (array_key_exists($ID, $cart)) {
+                    if((int)$cart[$ID]['numbe'] + $numbe < $row["so_luong"])
+                        {
+                            $sl= (int)$cart[$ID]['numbe'] + $numbe;
+                        }else{
+                            $sl= $row["so_luong"];
+                        }
+
                     $cart[$ID] = array(
                         'name' => $row["ten_san_pham"],
-                        'numbe' => (int)$cart[$ID]['numbe'] + $numbe,
+                        'numbe' => $sl ,
                         'price' => $row["gia_ban"],
                         'img' => $row["anh_thumbnail"]
                     );
@@ -63,6 +70,11 @@ include 'funtion.php';
             }
         }
     }
+    // tải lại trang sau khi thêm sản phẩm.
+    header("Location: http://localhost/website_noi_that/User/TuyetLan/cart.php");
+    exit;
+
+
     }
     ?>
 
@@ -111,7 +123,7 @@ include 'funtion.php';
 
                                     <td><h3 class = "mt-2 ml-1"><?php echo $value['name'] ?></h3></td>
                                     <td><input onkeypress="return isNumberKey(event)" class="numbe" id="quanlyti_<?php echo $key ?>" type="number" value="<?php echo $value['numbe'] ?>" min="1" max="<?= $row["so_luong"]?>" onchange="updatecart(<?php echo $key ?>)"></td>
-                                    <td><img class="img" height="100px" width="100px" src="<?php echo $value['img'] ?>" alt=""></td>
+                                    <td><img class="img" height="100px" width="100px" src="../../Admin/Quan_li_san_pham/<?php echo $value['img'] ?>" alt=""></td>
                                     <td>
                                         <p><span class=price><?php echo $value["price"] ?></span><sup>đ</sup></p>
                                     </td>
@@ -133,7 +145,7 @@ include 'funtion.php';
                     </tbody>
                 </table>
                 <div class="price-total mt-3">
-                    <h3> Tổng Tiền: <span><?php echo $sum1 ?></span><sup>vnd</sup> </h3>
+                    <h3> Tổng Tiền: <span><?php echo $sum1 ?></span><sup>đ</sup> </h3>
                 </div>
 
                 <div class="button text-right" style="text-align: right; display: flex; justify-content: flex-end ;">
@@ -169,8 +181,7 @@ include 'funtion.php';
             "ID": ID,
             "numbe": numbe
         }, function(data) {
-            //afterupdate cart
-            $("#listcart").load("http://localhost/khach_webnoithat/cart.php #cartx");
+            $("#listcart").load("http://localhost/website_noi_that/User/TuyetLan/cart.php #cartx");
         });
 
         window.location.reload();
@@ -182,7 +193,7 @@ include 'funtion.php';
             "numbe": 0
         }, function(data) {
             //afterupdate cart
-            $("#listcart").load("http://localhost/khach_webnoithat/cart.php #cartx");
+            $("#listcart").load("http://localhost/website_noi_that/User/TuyetLan/cart.php #cartx");
         });
         window.location.reload();
     }

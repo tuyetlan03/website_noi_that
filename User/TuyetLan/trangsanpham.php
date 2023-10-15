@@ -138,39 +138,36 @@
                     </div>
 
 
-                <div class="row mt-4 d-flex">
-                        
-                    <?php 
-                     if(isset($_GET['Search'])) {
-                        $search = $_GET['Search'];
-                        $sql = "SELECT * FROM san_pham WHERE ten_san_pham  like '%$search%'";                     
-                    }else if(isset($_GET['ID_DM']))
-                    {
-                        $sql = "SELECT * FROM san_pham WHERE ma_danh_muc = " .$_GET["ID_DM"];
-                    }else
-                    
-                    {
-                        $sql = "SELECT * FROM san_pham";
-                    }
-                        $result = $conn->query($sql);// đây là phần thực hiện truy vấn
-                        if ($result->num_rows > 0) { // nếu dữ liệu có thì ta sử dụng while để duyệt qua từng hàng (có thể sử dụng foreach)
-                            while ($row = $result->fetch_assoc()) 
-                        { // Sử dụng biến $row 
-                    ?>
-                        <div class="col-4">
-                            <a href='trangchitietsp.php?ID=<?=$row["id"]?>'><img class="imgsp" src="<?=$row["anh_thumbnail"]?>" alt="anh <?=$row["ten_san_pham"]?>"></a>
-                            <p><?=$row["ten_san_pham"]?></p>
-                            <p style="color:red"><?=$row["gia_ban"]?></p>
-                        </div>
+                    <div class="row mt-4 d-flex">
                         <?php
+                        if (isset($_GET['Search'])) {
+                            $search = $_GET['Search'];
+                            $sql = "SELECT * FROM san_pham WHERE ten_san_pham LIKE '%$search%'";
+                        } else if (isset($_GET['ID_DM'])) {
+                            $sql = "SELECT * FROM san_pham WHERE ma_danh_muc = " . $_GET["ID_DM"];
+                        } else {
+                            $sql = "SELECT * FROM san_pham";
+                        }
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                // Kiểm tra nếu số lượng sản phẩm lớn hơn 0 thì hiển thị
+                                if ($row["so_luong"] > 0) {
+                                    ?>
+                                    <div class="col-4">
+                                        <a href='trangchitietsp.php?ID=<?=$row["id"]?>'><img class="imgsp" src="../../Admin/Quan_li_san_pham/<?=$row["anh_thumbnail"]?>" alt="anh <?=$row["ten_san_pham"]?>"></a>
+                                        <p><?=$row["ten_san_pham"]?></p>
+                                        <p style="color:red"><?=$row["gia_ban"]?> <span>đ</span></p>
+                                    </div>
+                                <?php
+                                }
                             }
-                            } else {
-                                echo "Không có dữ liệu.";
-                            }
+                        } else {
+                            echo "Không có dữ liệu.";
+                        }
                         ?>
+                    </div>
 
-                       
-                </div>
                 
 
             </div>

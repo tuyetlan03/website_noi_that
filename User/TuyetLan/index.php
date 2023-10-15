@@ -165,7 +165,7 @@
                     <div class="item col-4">
                         <div>
                             <a href='trangsanpham.php?ID_DM=<?=$row["id"]?>'>
-                                <img style="width:360px"; src='<?=$row["anh_danh_muc"]?>' alt='anh <?=$row["ten_danh_muc"]?>'>
+                                <img style="width:360px"; src='../../Admin/Quan_li_danh_muc/<?=$row["anh_danh_muc"]?>' alt='anh <?=$row["ten_danh_muc"]?>'>
                             </a>
                         </div>
                         <div class="item_content">

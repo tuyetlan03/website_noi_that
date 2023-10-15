@@ -4,13 +4,12 @@
    <?php
 
    if (isset($_POST["addNew"])) {
-      echo("post được rồi");
       $total2 = 0;
-      // $as =  $_SESSION['online'];
+      $id_user =  $_SESSION['id'];
       $curentdate = date("Y-m-d");
-      $_POST["user_id"] = 1;  /*đoạn này khi nào làm được đăng nhập thì đổi thành $as giờ mặc định là 1 */
+      $_POST["user_id"] = $id_user;  
       $_POST["trang_thai"] = 0;
-      $_POST["thoi_diem_dat_hang"] = $curentdate;
+      $_POST["thoi_gian_dat_hang"] = $curentdate;
       if ($_SESSION['cart'] == 0) {
          echo ('<h3 class="">Không có sản phẩm nào trong giỏ hàng</h3>');
       } else {
@@ -48,7 +47,7 @@
          header("Refresh:0");
          echo '<script>
                localStorage.setItem("purchaseSuccess", "true");
-               window.location.href = "http://localhost/khach_webnoithat/cart.php";
+               window.location.href = "http://localhost/website_noi_that/User/TuyetLan/cart.php";
             </script>';
          exit;
       }
