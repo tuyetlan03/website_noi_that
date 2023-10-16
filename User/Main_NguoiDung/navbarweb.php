@@ -8,17 +8,17 @@
         </a>
         
         <ul class="nav justify-content-center">
-            <li class="nav-item"><a class="nav-link" href="index.php">TRANG CHỦ</a></li>
-            <li class="nav-item"><a class="nav-link" href="trangsanpham.php">SẢN PHẨM</a></li>
-            <li class="nav-item"><a class="nav-link" href="tranggioithieu.php">GIỚI THIỆU</a></li>
+            <li class="nav-item"><a class="nav-link" href="../TuyetLan/">TRANG CHỦ</a></li>
+            <li class="nav-item"><a class="nav-link" href="../TuyetLan/trangsanpham.php">SẢN PHẨM</a></li>
+            <li class="nav-item"><a class="nav-link" href="../TuyetLan/tranggioithieu.php">GIỚI THIỆU</a></li>
             <li class="nav-item"><a class="nav-link" href="#">TIN TỨC</a></li>
-            <li class="nav-item"><a class="nav-link" href="tranglienhe.php">LIÊN HỆ</a></li>
+            <li class="nav-item"><a class="nav-link" href="../TuyetLan/tranglienhe.php">LIÊN HỆ</a></li>
         </ul>
 
         <ul class="nav justify-content-end">
             <li><a class="fa-solid fa-magnifying-glass" href="#"></a></li>
-            <li><a class="fa-solid fa-cart-shopping" href="giohang.php"></a></li>
-            <li><a class="fa-regular fa-user" href="#"></a></li>
+            <li><a class="fa-solid fa-cart-shopping" href="../TuyetLan/cart.php"></a></li>
+            <li><a class="fa-regular fa-user" href="../Thong_Tin_Ca_Nhan/thongtincanhan.php"></a></li>
         </ul>
         </div>
     </div>

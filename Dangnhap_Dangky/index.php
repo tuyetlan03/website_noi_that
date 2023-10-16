@@ -27,13 +27,12 @@
                 $id = $row['id'];
                 $username = $row['ho_ten'];
                 $cap_bac = $row["cap_bac"];
-            
+                $_SESSION['id'] = $id;
                 // Chuyển hướng người dùng dựa trên cấp bậc
                 if ($cap_bac == "Quản trị") {
                     $_SESSION['ho_ten'] = $username;
                     header("Location: ../Admin/Bang_dieu_khien");
                 } elseif ($cap_bac == "Khách") {
-                    $_SESSION['id'] = $id;
                     $_SESSION['ho_ten'] = $username;
                     header("Location: ../User/TuyetLan");
                 } else {
@@ -143,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dangky']))
                             <span class="icon">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQFJREFUSEvtldERgjAMhtMsELoBbIKTqJMok8gmuolsUMIAjRcPPc5CC5x6Ptin3jX9v79p0hr48DAf1odZAOdciYhbACjVkIg0IlJZay8pg0lA13U7ETlNCFVEdIxBooDe+bkXqLz3tc4RcQcAeqLce19Ya5spSBTQtu3ZGKNpCZwyszo/AEBNRPtVAGYW3UhEgRHnXI6IVwBoiKh4O0AFYwYewGiKUgKpdYV8H6CVY4w59JebKvPnuohcxnojOAEz68Xls5UHgQrJsmwz3DsGuFfO2vFacX9AkMl/ipLF9RMpWt1oYy/r2DOs36P+YIu6efZTkUzywoDkn7xQLwi/AYcUkRl3IN9GAAAAAElFTkSuQmCC"/>
                             </span>
-                            <input type="password" name="pass"required>
+                            <input type="password" id="pass" name="pass"required>
                             <label>Password</label>
                         </div>
 
@@ -151,7 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dangky']))
                             <span class="icon">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQFJREFUSEvtldERgjAMhtMsELoBbIKTqJMok8gmuolsUMIAjRcPPc5CC5x6Ptin3jX9v79p0hr48DAf1odZAOdciYhbACjVkIg0IlJZay8pg0lA13U7ETlNCFVEdIxBooDe+bkXqLz3tc4RcQcAeqLce19Ya5spSBTQtu3ZGKNpCZwyszo/AEBNRPtVAGYW3UhEgRHnXI6IVwBoiKh4O0AFYwYewGiKUgKpdYV8H6CVY4w59JebKvPnuohcxnojOAEz68Xls5UHgQrJsmwz3DsGuFfO2vFacX9AkMl/ipLF9RMpWt1oYy/r2DOs36P+YIu6efZTkUzywoDkn7xQLwi/AYcUkRl3IN9GAAAAAElFTkSuQmCC"/>
                             </span>
-                            <input type="password" name="repass"required>
+                            <input type="password" id="repass" name="repass"required>
+                            <p id="message"></p>
                             <label>Nhập lại Password</label>
                         </div>
 
@@ -171,6 +171,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dangky']))
     var message = "Đăng ký thành công";
     alert(message); 
     }
+
+    const password = document.getElementById("pass");
+    const confirm_password = document.getElementById("repass");
+    const message = document.getElementById("message");
+
+    function checkPassword() {
+        if (password.value === confirm_password.value) {
+            message.innerHTML = "Mật khẩu khớp.";
+            message.style.color = "green";
+        } else {
+            message.innerHTML = "Mật khẩu không khớp.";
+            message.style.color = "red";
+        }
+    }
+
+    password.addEventListener("keyup", checkPassword);
+    confirm_password.addEventListener("keyup", checkPassword);
 </script>
 </body>
 </html>

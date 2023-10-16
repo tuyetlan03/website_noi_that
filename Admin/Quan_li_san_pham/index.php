@@ -82,7 +82,6 @@
                             <h5>Quản lý sản phẩm<h5>
                         </div>
                         <div class="p-2 ms-auto"><a href="dang_sanpham.php" class="btn btn-primary">Đăng</a></div>
-                        <div class="p-2"><a href="xoa_sanpham.php" class="btn btn-danger">Xóa</a></div>
                     </div>
                 </div>
 
@@ -144,7 +143,6 @@
                     <table class="table table-bordered table-hover vertical-center">
                         <thead>
                             <tr>
-                                <th class="checkbox-column"><input type="checkbox" value="1"/></th>
                                 <th>&nbsp;</th>
                                 <th>Mã sản phẩm</th>
                                 <th>Tên sản phẩm</th>
@@ -155,14 +153,13 @@
                                 <th>Trạng thái</th>
                                 <th>Lượt xem</th>
                                 <th>Ngày đăng</th>
-                                <th class="button-column">&nbsp;</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <?php foreach($products as $product){ ?>
                                 <tr class="odd">
-                                    <td width="5"><input value="202886" type="checkbox"/></td>
                                     <td><img src="<?php echo($product['anh_thumbnail']) ?>" height="100px"/></td>
                                     <td><?php echo($product['id']) ?></td>
                                     <td><?php echo($product['ten_san_pham']) ?></td>
@@ -185,8 +182,9 @@
                                     ?></td>
                                     <td><?php echo($product['luot_xem']) ?></td>
                                     <td><?php echo($product['ngay_cap_nhat_san_pham']) ?></td>
-                                    <td style="width: 100px;" align="center"><a class="fa-solid fa-magnifying-glass" href="#"></a>&ensp; 
-                                    <a class="fa-solid fa-pen-to-square" href="sua_san_pham_2.php?id=<?php echo($product['id']) ?>"></a>&ensp;<a class="fa-solid fa-trash" href="xoa_sanpham.php?id=<?php echo($product['id']) ?>"></a>
+                                    <td style="width: 100px;" align="center">
+                                    <a class="fa-solid fa-pen-to-square" href="sua_san_pham_2.php?id=<?php echo($product['id']) ?>"></a>&ensp;
+                                    <a class="fa-solid fa-trash" href="xoa_sanpham.php?id=<?php echo($product['id']) ?>"></a>
                                     </td>
                                 </tr>
                             <?php } 

@@ -10,8 +10,8 @@
 </head>
 <body>
 <?php
-session_start();
-$username = $_SESSION['ho_ten'];
+  session_start();
+  $username = $_SESSION['ho_ten'];
 ?>
   <nav class="navbar bg-dark p-4">
     <div class="login d-flex"></div>

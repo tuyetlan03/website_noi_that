@@ -12,7 +12,7 @@
                 <?php
                     include '../Main_QuanTri/connect.php';
 
-                    $sql = "SELECT tong_hoa_don FROM don_hang";
+                    $sql = "SELECT tong_hoa_don, trang_thai FROM don_hang";
                     $result = $conn->query($sql);
                     $totalPrice = 0;
                     if ($result->num_rows > 0) {
@@ -26,8 +26,9 @@
                     }
 
                     } else {
-                    echo "Không tìm thấy dữ liệu";
+                        echo "Không tìm thấy dữ liệu";
                     }
+
                     function formatPrice($totalPrice) {
                         if ($totalPrice >= 1000 && $totalPrice < 1000000) {
                             return number_format($totalPrice / 1000) .  'k';
@@ -48,11 +49,13 @@
                         <tr>
                             <th>Tổng doanh thu</th>
                         </tr>
+
                         <tr>
                             <td style="font-size: 100px;"><span>~</span><?php echo formatPrice($totalPrice); ?></td>
                         </tr>
                     </table>
                 </div>
+
                 <?php
                     include '../Main_QuanTri/connect.php';
                     // Truy vấn để lấy số lượng tài khoản với cấp bậc "khách"
@@ -73,6 +76,7 @@
                         <tr>
                             <th>Người dùng đăng ký</th>
                         </tr>
+
                         <tr>
                             <td style="font-size: 150px;" align="center"><?php echo $soLuongKhach;?></td>
                         </tr>
@@ -80,16 +84,17 @@
                 </div>
                 
                 <br><br>
+
                 <?php
                     include '../Main_QuanTri/connect.php';
 
                     // Truy vấn để lấy số lượng tài khoản với cấp bậc "khách"
-                    $sql = "SELECT COUNT(*) AS total FROM don_hang";
+                    $sql = "SELECT COUNT(*) AS total FROM don_hang WHERE trang_thai != 'Hoàn thành'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows == 1) {
                         $row = $result->fetch_assoc();
-                        $soDonHang = $row['total'];
+                            $soDonHang = $row['total'];
                     }
 
                     // Đóng kết nối đến cơ sở dữ liệu
@@ -101,11 +106,13 @@
                         <tr>
                             <th>Số lượng đơn hàng</th>
                         </tr>
+
                         <tr>
                             <td style="font-size: 150px;" align="center"><?php echo $soDonHang; ?></td>
                         </tr>
                     </table>
                 </div>
+
                 <?php
                     if (isset($_SESSION['visits'])) {
                         $visits = $_SESSION['visits'];
@@ -119,6 +126,7 @@
                         <tr>
                             <th>Truy cập website</th>
                         </tr>
+                        
                         <tr>
                             <td style="font-size: 150px;" align="center"><?php echo $visits; ?></td>
                         </tr>

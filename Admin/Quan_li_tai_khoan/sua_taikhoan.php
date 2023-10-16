@@ -1,4 +1,4 @@
-<head>
+head>
     <title>Quản lý tài khoản</title>
     <link rel="shortcut icon" type="image/png" href="../img/logo.png" />
 </head>
@@ -48,7 +48,7 @@ if (isset($_GET["id"])) {
         // Lấy thông tin được gửi từ biểu mẫu
         $newHoTen = $_POST["hoTen"];
         $newEmail = $_POST["email"];
-        //$newPassword = $_POST["new_password"];
+        $newPassword = $_POST["new_password"];
         //$newRePassword = $_POST["new_repassword"];
         //$newNgaySinh = $_POST["new_ngay_sinh"];
         $newGioiTinh = $_POST["gioiTinh"];
@@ -62,7 +62,7 @@ if (isset($_GET["id"])) {
 
     
         // Query SQL để cập nhật thông tin tài khoản
-        $updateSql = "UPDATE user SET ho_ten='$newHoTen', email='$newEmail', gioi_tinh='$newGioiTinh', cap_bac='$newCapBac' WHERE id=$id";
+        $updateSql = "UPDATE user SET ho_ten='$newHoTen', mat_khau='$newPassword', email='$newEmail', gioi_tinh='$newGioiTinh', cap_bac='$newCapBac' WHERE id=$id";
     
         if (mysqli_query($conn, $updateSql)) {
             header("Location: index.php");
@@ -86,12 +86,13 @@ if (isset($_GET["id"])) {
     include '../Main_QuanTri/connect.php';
 
     // Truy vấn để lấy thông tin tài khoản
-    $sql = "SELECT id, ho_ten, email, gioi_tinh, cap_bac FROM user WHERE id = $id";
+    $sql = "SELECT id, ho_ten, mat_khau, email, gioi_tinh, cap_bac FROM user WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $hoTen = $row["ho_ten"];
+        $matKhau = $row["mat_khau"];
         $email = $row["email"];
         $gioiTinh = $row["gioi_tinh"];
         $capBac = $row["cap_bac"];
@@ -107,12 +108,6 @@ if (isset($_GET["id"])) {
     exit;
 }
 ?>
-
-    <!-- Sau đó, điền thông tin vào các trường của biểu mẫu -->
-
-
-    <!-- Tương tự cho các trường thông tin khác -->
-
 
     <div class="content">
         <div class="accordion" id="accordionExample">
@@ -141,31 +136,27 @@ if (isset($_GET["id"])) {
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label" >Mật khẩu</label>
+                            <label for="password" class="col-sm-2 col-form-label">Mật khẩu</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" id="password" name="new_password">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Nhập lại mật khẩu</label>
+                            <label for="confirm_password" class="col-sm-2 col-form-label">Nhập lại mật khẩu</label>
                             <div class="col-sm-10">
-                                <input type="repassword" class="form-control">
+                                <input type="password" class="form-control" id="confirm_password"
+                                    name="nhap_lai_mat_khau">
+                                <p id="message"></p>
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Ngày sinh</label>
-                            <div class="col-sm-10">
-                                <input type="date" class="form-control">
-                            </div>
-                        </div>
 
                         <div class="mb-3 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Giới tính</label>
                             <div class="col-sm-10">
                                 <select class="span10 col-sm-12" name="gioiTinh" style="height:40px; width: 100px;"
-                                     id="ProductCategories_status">
+                                    id="ProductCategories_status">
                                     <option value="Nam">Nam</option>
                                     <option value="Nữ">Nữ</option>
                                 </select>
@@ -199,5 +190,21 @@ if (isset($_GET["id"])) {
         </div>
     </div>
 </body>
+<script>
+const password = document.getElementById("password");
+const confirm_password = document.getElementById("confirm_password");
+const message = document.getElementById("message");
 
-</html>
+function checkPassword() {
+    if (password.value === confirm_password.value) {
+        message.innerHTML = "Mật khẩu khớp.";
+        message.style.color = "green";
+    } else {
+        message.innerHTML = "Mật khẩu không khớp.";
+        message.style.color = "red";
+    }
+}
+
+password.addEventListener("keyup", checkPassword);
+confirm_password.addEventListener("keyup", checkPassword);
+</script>

@@ -22,10 +22,6 @@
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </form> -->
                         </div>
-
-                        <div class="p-2">
-                            <a href="xoa_hangall.php" class="btn btn-danger">Xóa</a>
-                        </div>
                     </div>
                 </div>
                 <div class="accordion-body">
@@ -56,7 +52,6 @@
                         echo '<thead>';
                         echo '<tr>';
                         echo '<th>&nbsp;</th>';
-                        echo '<th class="checkbox-column"><input type="checkbox" value="1"/></th>';
                         echo '<th>&nbsp;</th>';
                         echo '<th>Tên hãng</th>';
                         echo '<th>Số điện thoại</th>';
@@ -69,9 +64,7 @@
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo '<tr>';
                             echo '<td width="30px">' . $row['id'] . '</td>';
-                            echo '<td width="30px"><input value="' . $row['id'] . '" type="checkbox"/></td>';
                             echo '<td width="60px;"><img src="' . $row['anh_dai_dien'] . '" alt="Ảnh đại diện" width="60px"></td>';
-
                             echo '<td>' . $row['ten_hang'] . '</td>';
                             echo '<td>' . $row['so_dien_thoai'] . '</td>';
                             echo '<td>' . $row['dia_chi'] . '</td>';
@@ -93,5 +86,3 @@
         </div>
     </div>
 </body>
-
-</html>

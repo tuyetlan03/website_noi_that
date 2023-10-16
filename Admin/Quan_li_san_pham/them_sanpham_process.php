@@ -51,3 +51,4 @@ header('location: index.php');
 
 mysqli_query($connect, $sql);
 mysqli_close($connect);
+?>

@@ -59,3 +59,4 @@ $sql = "update san_pham
 mysqli_query($connect, $sql);
 mysqli_close($connect);
 header('location: index.php');
+?>

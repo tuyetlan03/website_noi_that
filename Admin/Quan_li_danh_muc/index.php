@@ -20,7 +20,6 @@
                             <h5>Quản lý danh mục<h5>
                         </div>
                         <div class="p-2 ms-auto"><a href="them_danhmuc.php" class="btn btn-primary">Thêm</a></div>
-                        <div class="p-2"><a href="xoa_danhmuc.php" class="btn btn-danger">Xóa</a></div>
 
                     </div>
                 </div>
@@ -29,7 +28,6 @@
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th class="checkbox-column"><input type="checkbox" value="1"/></th>
                                 <th>Tên danh mục</th>
                                 <th>Hiển thị ở trang chủ</th>
                                 <th>Trạng thái</th>
@@ -45,7 +43,6 @@
                             ?>
                                 <tr>
                                     <td style="width: 50px; text-align: center;"><?php echo ($categorie['id']) ?></td>
-                                    <td width="5"><input value="53254" id="news-categories-grid_c0_0" type="checkbox" name="news-categories-grid_c0[]" /></td>
                                     <td><?php echo ($categorie['ten_danh_muc']) ?></td>
 
                                     <td style="width: 100px; text-align: center;"><?php

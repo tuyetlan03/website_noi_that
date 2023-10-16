@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2023 at 05:50 PM
+-- Generation Time: Oct 16, 2023 at 05:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,20 @@ CREATE TABLE `chi_tiet_don_hang` (
   `gia_ban` int(11) DEFAULT NULL,
   `so_luong` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chi_tiet_don_hang`
+--
+
+INSERT INTO `chi_tiet_don_hang` (`id`, `ma_don_hang`, `ma_san_pham`, `gia_ban`, `so_luong`) VALUES
+(12, 7, 4, 14900000, 1),
+(13, 7, 5, 30900000, 1),
+(14, 7, 6, 5699000, 1),
+(15, 8, 5, 30900000, 1),
+(16, 8, 8, 51000000, 2),
+(17, 8, 9, 25930000, 3),
+(18, 9, 4, 14900000, 4),
+(19, 9, 5, 30900000, 2);
 
 -- --------------------------------------------------------
 
@@ -80,6 +94,15 @@ CREATE TABLE `don_hang` (
   `trang_thai` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `don_hang`
+--
+
+INSERT INTO `don_hang` (`id`, `user_id`, `ho_ten`, `email`, `so_dien_thoai`, `dia_chi`, `ghi_chu`, `tong_hoa_don`, `thoi_gian_dat_hang`, `trang_thai`) VALUES
+(7, 2, 'apple', 'nam1@gmail.com', '0999999999', 'hà nội', 'sadads', 51499000, '2023-10-15 00:00:00', 'Hoàn thành'),
+(8, 6, 'apple', 'nam1@gmail.com', '0999999999', 'hà nội', 'sadsa', 210690000, '2023-10-15 00:00:00', 'Chờ xử lý'),
+(9, 2, 'Cường Trần Mạnh', 'tmc9012@gmail.com', '0392683276', 'Hà Nội', 'Không có gì', 121400000, '2023-10-16 00:00:00', '0');
+
 -- --------------------------------------------------------
 
 --
@@ -99,7 +122,7 @@ CREATE TABLE `hang_san_xuat` (
 --
 
 INSERT INTO `hang_san_xuat` (`id`, `ten_hang`, `so_dien_thoai`, `dia_chi`, `anh_dai_dien`) VALUES
-(10, 'Trung Quốc 2', '11111', 'Trung Quốc', 'anh_hang/3.jpg'),
+(10, 'Trung Quốc 2', '11111', 'Trung Quốc', 'anh_hang/1697212933.png'),
 (11, 'Việt Nam', '0888888888', 'Việt Nam', 'anh_hang/1697213169.jpg');
 
 -- --------------------------------------------------------
@@ -131,12 +154,12 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`id`, `ma_danh_muc`, `ma_hang_san_xuat`, `ten_san_pham`, `gia_ban`, `anh_thumbnail`, `mo_ta_san_pham`, `mo_ta_san_pham_chi_tiet`, `ngay_them_san_pham`, `ngay_cap_nhat_san_pham`, `so_luong`, `da_ban`, `luot_xem`, `hien_thi`, `tinh_trang`) VALUES
-(4, 2, 11, 'Bàn làm việc Coastal', 14900000, 'anh_san_pham/1697214196.jpg', 'Bàn làm việc Coastal', 'Coastal mang đậm chất Việt khi khéo léo dung hòa được những nét đẹp lấy cảm hứng từ miền duyên hải nước ta với các vật liệu cao cấp, lối thiết kế hiện đại. Bàn làm việc Coastal có thiết kế độc đáo với phần tủ kéo cong mang đến không gian làm việc sáng tạo và độc đáo. Chất liệu gỗ Ash vừa đáp ứng tính thẩm mỹ, đồng thời là vật liệu bền bỉ theo thời gian. Khi kết hợp bàn làm việc cùng ghế ăn Coastal sẽ tạo nên góc làm việc cực kỳ thoải mái và tiện nghi.', '2023-10-13 06:23:16', '2023-10-13 06:23:16', 50, 0, 1, 'co', 'co'),
-(5, 2, 11, 'Bàn làm việc Fence', 30900000, 'anh_san_pham/1697214399.jpg', 'Bàn làm việc Fence', 'Mẫu bàn Fence được thiết kế mang đậm phong cách hiện đại và sang trọng. Phần mặt bàn được tạo hình đơn giản đề cao sự rộng rãi để có thể cung cấp đủ không gian cho màn hình máy tính, laptop cũng như các vật dụng văn phòng cơ bản khác.\r\n\r\nVề màu sắc tổng thể thì Fence là sự kết hợp đầy sức sáng tạo giữa màu gỗ tự nhiên và màu đen, tạo nên sự tương phản và hài hòa trong thiết kế. Chiếc bàn này được làm từ gỗ công nghiệp với lớp hoàn thiện Melamine giúp chống thấm nước, hơi ẩm và trầy xước. Ngoài ra, phần khung kim loại sơn tĩnh điện tạo nên sự chắc chắn và bền bỉ trong thời gian dài sử dụng.', '2023-10-13 06:26:39', '2023-10-13 06:26:39', 50, 0, 1, 'co', 'co'),
-(6, 2, 10, 'Bàn làm việc Hopper', 5699000, 'anh_san_pham/1697214570.jpg', 'Bàn làm việc Hopper', 'Bàn làm việc Hopperlà sản phẩm nhập từ Ý. Đặc trưng bởi các hình dạng mềm mại, mặt cong nhẹ, góc tròn và đường vát. Các tính chất tự nhiên của gỗ được làm sáng lên bởi cách kết hợp tương phản về màu sắc của ngăn kéo giữa và ngăn xếp nâng. Là giải pháp lý tưởng cho việc trang trí văn phòng tại nhà, nhưng cũng phù hợp hoàn hảo trong phòng trẻ em cũng như trong các môi trường với phong cách tỉnh táo hơn nhờ có sự kết hợp màu sắc.', '2023-10-13 06:29:30', '2023-10-13 06:29:30', 50, 0, 1, 'co', 'co'),
+(4, 2, 11, 'Bàn làm việc Coastal', 14900000, 'anh_san_pham/1697214196.jpg', 'Bàn làm việc Coastal', 'Coastal mang đậm chất Việt khi khéo léo dung hòa được những nét đẹp lấy cảm hứng từ miền duyên hải nước ta với các vật liệu cao cấp, lối thiết kế hiện đại. Bàn làm việc Coastal có thiết kế độc đáo với phần tủ kéo cong mang đến không gian làm việc sáng tạo và độc đáo. Chất liệu gỗ Ash vừa đáp ứng tính thẩm mỹ, đồng thời là vật liệu bền bỉ theo thời gian. Khi kết hợp bàn làm việc cùng ghế ăn Coastal sẽ tạo nên góc làm việc cực kỳ thoải mái và tiện nghi.', '2023-10-13 06:23:16', '2023-10-13 06:23:16', 41, 9, 1, 'co', 'co'),
+(5, 2, 11, 'Bàn làm việc Fence', 30900000, 'anh_san_pham/1697214399.jpg', 'Bàn làm việc Fence', 'Mẫu bàn Fence được thiết kế mang đậm phong cách hiện đại và sang trọng. Phần mặt bàn được tạo hình đơn giản đề cao sự rộng rãi để có thể cung cấp đủ không gian cho màn hình máy tính, laptop cũng như các vật dụng văn phòng cơ bản khác.\r\n\r\nVề màu sắc tổng thể thì Fence là sự kết hợp đầy sức sáng tạo giữa màu gỗ tự nhiên và màu đen, tạo nên sự tương phản và hài hòa trong thiết kế. Chiếc bàn này được làm từ gỗ công nghiệp với lớp hoàn thiện Melamine giúp chống thấm nước, hơi ẩm và trầy xước. Ngoài ra, phần khung kim loại sơn tĩnh điện tạo nên sự chắc chắn và bền bỉ trong thời gian dài sử dụng.', '2023-10-13 06:26:39', '2023-10-13 06:26:39', 40, 10, 1, 'co', 'co'),
+(6, 2, 10, 'Bàn làm việc Hopper', 5699000, 'anh_san_pham/1697214570.jpg', 'Bàn làm việc Hopper', 'Bàn làm việc Hopperlà sản phẩm nhập từ Ý. Đặc trưng bởi các hình dạng mềm mại, mặt cong nhẹ, góc tròn và đường vát. Các tính chất tự nhiên của gỗ được làm sáng lên bởi cách kết hợp tương phản về màu sắc của ngăn kéo giữa và ngăn xếp nâng. Là giải pháp lý tưởng cho việc trang trí văn phòng tại nhà, nhưng cũng phù hợp hoàn hảo trong phòng trẻ em cũng như trong các môi trường với phong cách tỉnh táo hơn nhờ có sự kết hợp màu sắc.', '2023-10-13 06:29:30', '2023-10-13 06:29:30', 47, 3, 1, 'co', 'co'),
 (7, 2, 10, 'Bàn làm việc Kate', 13200000, 'anh_san_pham/1697214635.jpg', 'Bàn làm việc Kate', 'Bàn làm việc Kate mang phong cách bán cổ điển với màu trắng nhẹ nhàng như tô điểm cho không gian thêm sáng. Bàn Kate được làm bằng gỗ sồi sơn lấy ghim giúp người sử dụng vẫn cảm nhận được từng thớ gỗ.', '2023-10-13 06:30:35', '2023-10-13 06:30:35', 50, 0, 1, 'co', 'co'),
-(8, 2, 11, 'Bàn làm việc Maxine', 51000000, 'anh_san_pham/1697214691.jpg', 'Bàn làm việc Maxine', 'Một thiết kế bàn làm việc đẳng cấp cho không gian làm việc của bạn, Maxine sử dụng chất liệu da trên bề mặt, khung gỗ hoàn thiện mdf veneer nâu trầm sang trọng tạo cảm giác thư thái, nhẹ nhàng. Công năng của chiếc bàn được sắp tối ưu với các hộc kéo rộng. Maxine – Nét nâu trầm sang trọng Maxine, mang thiết kế vượt thời gian, gửi gắm và gói gọn lại những nét đẹp của thiên nhiên và con người nhưng vẫn đầy tính ứng dụng cao trong suốt hành trình phiêu lưu của nhà thiết kế người Pháp Dominique Moal. Bộ sưu tập nổi bật với màu sắc nâu trầm sang trọng, là sự kết hợp giữa gỗ, da bò và kim loại vàng bóng. Đặc biệt trên mỗi sản phẩm, những nét bo viên, chi tiết kết nối được sử dụng kéo léo tạo ra điểm nhất rất riêng cho bộ sưu tập. Maxine thể hiện nét trầm tư, thư giãn để tận hưởng không gian sống trong nhịp sống hiện đại. Sản phẩm thuộc BST Maxine được sản xuất tại Việt Nam.', '2023-10-13 06:31:31', '2023-10-13 06:31:31', 20, 0, 1, 'co', 'co'),
-(9, 3, 11, 'Giường Pop', 25930000, 'anh_san_pham/1697214922.jpg', 'Giường Pop', 'Giường Pop 1.8M M3 Vải Atlanta Kd1084 12 sử dụng nét đẹp đường vân gỗ cuộn xoáy đặc trưng, thể hiện trên tông màu nâu trầm ấm đầy sang trọng. Giường ngủ Pop là một trong những lựa chọn dành cho người yêu thích cái đẹp tinh giản, phù hợp với không gian phòng ngủ có diện tích khiêm tốn.', '2023-10-13 06:35:22', '2023-10-13 06:35:22', 30, 0, 1, 'co', 'co'),
+(8, 2, 11, 'Bàn làm việc Maxine', 51000000, 'anh_san_pham/1697214691.jpg', 'Bàn làm việc Maxine', 'Một thiết kế bàn làm việc đẳng cấp cho không gian làm việc của bạn, Maxine sử dụng chất liệu da trên bề mặt, khung gỗ hoàn thiện mdf veneer nâu trầm sang trọng tạo cảm giác thư thái, nhẹ nhàng. Công năng của chiếc bàn được sắp tối ưu với các hộc kéo rộng. Maxine – Nét nâu trầm sang trọng Maxine, mang thiết kế vượt thời gian, gửi gắm và gói gọn lại những nét đẹp của thiên nhiên và con người nhưng vẫn đầy tính ứng dụng cao trong suốt hành trình phiêu lưu của nhà thiết kế người Pháp Dominique Moal. Bộ sưu tập nổi bật với màu sắc nâu trầm sang trọng, là sự kết hợp giữa gỗ, da bò và kim loại vàng bóng. Đặc biệt trên mỗi sản phẩm, những nét bo viên, chi tiết kết nối được sử dụng kéo léo tạo ra điểm nhất rất riêng cho bộ sưu tập. Maxine thể hiện nét trầm tư, thư giãn để tận hưởng không gian sống trong nhịp sống hiện đại. Sản phẩm thuộc BST Maxine được sản xuất tại Việt Nam.', '2023-10-13 06:31:31', '2023-10-13 06:31:31', 17, 3, 1, 'co', 'co'),
+(9, 3, 11, 'Giường Pop', 25930000, 'anh_san_pham/1697214922.jpg', 'Giường Pop', 'Giường Pop 1.8M M3 Vải Atlanta Kd1084 12 sử dụng nét đẹp đường vân gỗ cuộn xoáy đặc trưng, thể hiện trên tông màu nâu trầm ấm đầy sang trọng. Giường ngủ Pop là một trong những lựa chọn dành cho người yêu thích cái đẹp tinh giản, phù hợp với không gian phòng ngủ có diện tích khiêm tốn.', '2023-10-13 06:35:22', '2023-10-13 06:35:22', 24, 6, 1, 'co', 'co'),
 (10, 3, 11, 'Giường Cabo', 23000000, 'anh_san_pham/1697215087.jpg', 'Giường Cabo', 'Giường Cabo với thiết kế trang nhã, tinh tế, sang trọng trong đó khung giường được làm bằng chất liệu gỗ phủ lớp MDF veener ash cao cấp, chân giường được làm từ kim loại được sơn đen chắc chắn, có khả năng chịu lực tốt. Giường Cabo mang đến cảm giác thư giãn, thoải mái nhất để nghỉ ngơi sau thời gian làm việc dài, mà còn là món đồ quan trọng trong thiết kế nội thất phòng ngủ.', '2023-10-13 06:38:07', '2023-10-13 06:38:07', 30, 0, 1, 'co', 'co'),
 (11, 3, 10, 'Giường ngủ Miami', 19300000, 'anh_san_pham/1697215227.jpg', 'Giường ngủ Miami', 'Giường ngủ bọc vải Miami sử dụng gỗ Sồi trắng nhập khẩu từ Mỹ kết hợp MDF chống ẩm cao cấp tạo nên sự chắc chắn cho sản phẩm. Nhờ vào tone ấm của gỗ, giường Miami mang đến một sự hài hòa, đặc trưng của phong cách nội thất Bắc Âu.', '2023-10-13 06:40:27', '2023-10-13 06:40:27', 35, 0, 1, 'co', 'co'),
 (12, 3, 11, 'Giường Leman', 33650000, 'anh_san_pham/1697215302.jpg', 'Giường Leman ', 'Giường ngủ bọc vải Leman 1m8 màu 02', '2023-10-13 06:41:42', '2023-10-13 06:41:42', 30, 0, 1, 'co', 'co'),
@@ -192,7 +215,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `ho_ten`, `gioi_tinh`, `email`, `so_dien_thoai`, `cap_bac`, `dia_chi`, `mat_khau`) VALUES
 (1, 'Quản trị Hello', 'Nam', 'admin@gmail.com', '0392683276', 'Quản trị', 'Hà Nội', '1'),
-(2, 'Khách Hello', 'Nam', 'user@gmail.com', '0392654654', 'Khách', 'Hà Nam', '1');
+(2, 'Khách Hello', 'Nam', 'user@gmail.com', '0392654654', 'Khách', 'Hà Nam', '1'),
+(6, 'nam157', NULL, 'nam@gmail.com', NULL, 'Khách', NULL, '157');
 
 --
 -- Indexes for dumped tables
@@ -254,7 +278,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `danh_muc`
@@ -266,7 +290,7 @@ ALTER TABLE `danh_muc`
 -- AUTO_INCREMENT for table `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hang_san_xuat`
@@ -278,7 +302,7 @@ ALTER TABLE `hang_san_xuat`
 -- AUTO_INCREMENT for table `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `san_pham_desc`
@@ -290,7 +314,7 @@ ALTER TABLE `san_pham_desc`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

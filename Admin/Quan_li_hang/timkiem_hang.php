@@ -24,7 +24,6 @@ if (mysqli_num_rows($result) > 0) {
     echo '<thead>';
     echo '<tr>';
     echo '<th>&nbsp;</th>';
-    echo '<th class="checkbox-column"><input type="checkbox" value="1" /></th>';
     echo '<th>&nbsp;</th>';
     echo '<th>Tên hãng</th>';
     echo '<th></th>';
@@ -34,7 +33,6 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<tr>';
         echo '<td width="30px">' . $row['id'] . '</td>';
-        echo '<td width="30px"><input value="' . $row['id'] . '"/></td>';
         echo '<td width="60px;"></td>';
         echo '<td>' . $row['ten_hang'] . '</td>';
         echo '<td style="width: 100px;" align="center"><a class="fa-solid fa-pen-to-square" href="sua_hang.php?id=' . $row['id'] . '"></a>&emsp;<a class="fa-solid fa-trash" href="xoa_hang.php?id=' . $row['id'] . '"></a></td>';

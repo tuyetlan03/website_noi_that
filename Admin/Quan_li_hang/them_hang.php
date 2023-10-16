@@ -75,4 +75,3 @@ include '../Main_QuanTri/nav.php';
         </div>
     </div>
 </body>
-<script>
