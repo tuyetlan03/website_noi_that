@@ -47,7 +47,7 @@
          header("Refresh:0");
          echo '<script>
                localStorage.setItem("purchaseSuccess", "true");
-               window.location.href = "http://localhost/website_noi_that/User/TuyetLan/cart.php";
+               window.location.href = "../TuyetLan/cart.php";
             </script>';
          exit;
       }

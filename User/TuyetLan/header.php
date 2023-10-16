@@ -63,7 +63,7 @@
 
 
                   <li><a href="cart.php"><i class='bx bx-cart-alt' ></i></a></li>
-                  <li><a href="#"><i class='bx bx-user'></i></a></li>
+                  <li><a href="../Thong_Tin_Ca_Nhan/thongtincanhan.php"><i class='bx bx-user'></i></a></li>
               </ul>
           </div>
 
